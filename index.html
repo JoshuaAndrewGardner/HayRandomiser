@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>Hay Randomiser</title>
+        
+        <script>
+            "use strict";
+            
+            var options = [                
+                    "Under Tree",            
+                    "Pine 1",
+                    "Pine 2",
+                    "Boundary Fence",
+                    "Corner Post",
+                    "Lane Gate",
+                    "Open Gate"
+                ]; 
+            
+            var opt1; 
+            var opt2;
+            
+            function randomise() {
+                console.log("HAY");
+                opt1 = Math.floor(Math.random() * options.length);
+                opt2 = Math.floor(Math.random() * options.length);
+                while(opt1 == opt2) {
+                    opt2 = Math.floor(Math.random() * options.length);
+                }
+                document.getElementById("out").textContent = "Locations: " + options[opt1] + " and " + options[opt2];
+            }
+            
+            function init() {                
+                document.getElementById("action").addEventListener("click", function() {randomise()});
+            }
+            
+            window.addEventListener("load", init);
+        </script>
+    </head>
+    <body>
+        
+        <p>
+            Amount of Locations to Generate: 
+            <input id="number" min="1" max="4" value="2" type="number"/> 
+        </p>
+        
+        <button id="action">Generate Locations</button>
+        <p id="out"></p>
+    </body>
+</html>
